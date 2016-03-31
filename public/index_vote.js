@@ -31,6 +31,13 @@ function finish(){
 	window.location="/thank_you";
     $.post("/submit_res",result);
 }
+function array_includes(array,target){
+	for(var i=0;i<array.length;i++){
+		if(array[i]==target)
+			return true;
+	}
+	return false;
+}
 function next(){
 	if(q_index==data.length){
 		finish();
@@ -39,8 +46,7 @@ function next(){
 	var q=ques=data[q_index++];
 	if(ques.when && !ques.when.every(function(w){
 		for(var x in w){
-			console.log(x,w[x],syms[x]);
-			return w[x].includes(syms[x]);
+			return array_includes(w[x],syms[x]);
 		}
 	})){
 		next();
