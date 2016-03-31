@@ -1,0 +1,91 @@
+# 我们不会记录有关您的任何信息
+-   ques: 您的性别是?
+    options:
+    - 男
+    - 女
+-   ques: 您是否是独生子女?
+    sym: the_only_child
+    options:
+    - 是
+    - 否
+-   ques: 您有多少兄弟姐妹?
+    when:
+    - the_only_child: [否]
+    options:
+    - 1个
+    - 2-3个
+    - 更多
+-   ques: 您来自农村还是来自城市?
+    options:
+    - 城市
+    - 农村
+-   ques: 您想要孩子吗?
+    sym: want_kids
+    options:
+    - 是
+    - 否
+-   ques: 您想要几个孩子?
+    sym: kids_num
+    when:
+    - want_kids: [是]
+    options:
+    - 1个
+    - 2个
+    - 2个以上
+-   ques: 您对孩子性别的偏好是?
+    when:
+    - want_kids: [是]
+    options:
+    - 更喜欢男孩
+    - 更喜欢女孩
+    - 无所谓性别
+    - 男女皆有
+-   ques: 您希望孩子之间相差几岁?
+    when:
+    - want_kids: [是]
+    - kids_num : [2个, 2个以上]
+    options:
+    - 1-2年
+    - 3-5年
+    - 6-10年
+    - 更长?
+-   ques: 当事业和孩子,发生冲突的时候,该如何选择呢?
+    when:
+    - want_kids: [是]
+    options:
+    - 事业优先
+    - 孩子优先
+-   ques: 您为什么想要小孩?
+    when:
+    - want_kids: [是]
+    #多选
+    type: multi 
+    options:
+    - 延续家族血脉
+    - 满足父母心愿
+    - 让孩子成为自己人生的延续
+    - 养儿防老
+    - 是家庭不可或缺的一部分
+    - 是人生完整的重要环节
+    - 其他原因
+-   ques: 您想在多大年龄要小孩?
+    when:
+    - want_kids: [是]
+    options:
+    - 18-25岁
+    - 25-30岁
+    - 30-35岁
+    - 35-40岁
+    - 40岁以上
+-   ques: 抚养方式?
+    when:
+    - want_kids: [是]
+    options:
+    - 自己养
+    - 父母养
+    - 其他
+# 在这里上原文
+-   ques: 新二胎政策对您是否有影响?
+    options:
+    - 有
+    - 无
