@@ -22,6 +22,11 @@
 		<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 		<script src="//cdn.hcharts.cn/highcharts/highcharts.js"></script>
+		<link rel="stylesheet" href="/bootstrap-material-design/dist/css/bootstrap-material-design.min.css">
+		<script src="/bootstrap-material-design/dist/js/material.min.js"></script>
+		<script>
+			$.material.init();
+		</script>
 	</head>
 	<body>
 		<h1>调查结果</h1>
@@ -72,6 +77,6 @@
 				});
 			});
 		</script>
-		<a class="btn btn-info btn-block" href="/correlation">探究相关性</a>
+		<a class="btn btn-info btn-block btn-raised" href="/correlation">探究相关性</a>
 	</body>
 </html>

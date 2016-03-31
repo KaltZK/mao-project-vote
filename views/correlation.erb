@@ -28,6 +28,11 @@
 		<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<script src="//cdn.hcharts.cn/highcharts/highcharts.js"></script>
 		<script type="text/javascript" src="//cdn.hcharts.cn/highcharts/highcharts-more.js"></script>
+		<link rel="stylesheet" href="/bootstrap-material-design/dist/css/bootstrap-material-design.min.css">
+		<script src="/bootstrap-material-design/dist/js/material.min.js"></script>
+		<script>
+			$.material.init();
+		</script>
 	</head>
 	<body>
 		<h1>统计结果相关性分析</h1>
@@ -40,7 +45,7 @@
 					<%end%>
 				</select>
 			<%end%>
-			<button class="btn btn-info btn-block" id="render_btn">显示图表</button>
+			<button class="btn btn-info btn-block btn-raised" id="render_btn">显示图表</button>
 		</div>
 		<div id="correlation"></div>
 		<script>

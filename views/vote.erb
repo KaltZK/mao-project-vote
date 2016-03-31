@@ -26,9 +26,12 @@
 		<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 		<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="/bootstrap-material-design/dist/css/bootstrap-material-design.min.css">
+		<script src="/bootstrap-material-design/dist/js/material.min.js"></script>
 	</head>
 	<body>
 	<script>
+		$.material.init();
 		var OPTIONS_MAX=10;
 		var TIMEOUT=400;
 	</script>
@@ -39,11 +42,11 @@
 			<script>
 			for(var i=0;i<OPTIONS_MAX;i++){
 				document.write('<div style="position:relative;">');
-				document.write('<button class="btn btn-default btn-block opt-btn" id="option_'+i+'" onmousedown="javascript:select('+i+');"></button>');
+				document.write('<button class="btn btn-default btn-block opt-btn btn-lg btn-raised" id="option_'+i+'" onmousedown="javascript:select('+i+');"></button>');
 				document.write('</div>');
 			}
 			</script>
-			<button class="btn btn-info btn-block" id="next_btn" onmousedown="javascript:record();">
+			<button class="btn btn-info btn-block btn-raised" id="next_btn" onmousedown="javascript:record();">
 				确定
 			</button>
 			<label id="ques_num"></label>
