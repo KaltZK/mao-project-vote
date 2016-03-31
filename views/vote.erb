@@ -4,10 +4,18 @@
 		<meta name="viewport" 
                 content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=0">
 		<style type="text/css">
-		.opt-btn{
-			margin-x: 50%;
-			position: inline;
-		}
+			.btn{
+				margin-top: 0.5em;
+				margin-bottom: 0.5em;
+			}
+			body{
+				top: 3em;
+				bottom: 3em;
+				left: 5%;
+				right: 5%;
+				width: 90%;
+				position: absolute;
+			}
 		</style>
 		<title>厦门大学大学生生育观念调查</title>
 		<!-- 新 Bootstrap 核心 CSS 文件 -->
@@ -25,7 +33,9 @@
 		var TIMEOUT=400;
 	</script>
 		<div>
+			<label>我们不会记录有关您的任何信息。</label>
 			<h3 id="ques"></h3>
+			<div class="bg-info" id="about-text"></div>
 			<script>
 			for(var i=0;i<OPTIONS_MAX;i++){
 				document.write('<div style="position:relative;">');
@@ -39,5 +49,6 @@
 			<label id="ques_num"></label>
 		</div>
 	<script src="/index_vote.js"></script>
+	<a href="/analysis">直接查看结果?</a>
 	</body>
 </html>

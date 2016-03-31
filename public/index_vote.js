@@ -44,6 +44,12 @@ function next(){
 		return;
 	}
 	var q=ques=data[q_index++];
+	if(ques.text){
+		$("#about-text").css("display","block");
+		$("#about-text").text(ques.text);
+	}else{
+		$("#about-text").css("display","none");
+	}
 	if(ques.when && !ques.when.every(function(w){
 		for(var x in w){
 			return array_includes(w[x],syms[x]);
