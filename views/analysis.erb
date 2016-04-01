@@ -78,5 +78,57 @@
 			});
 		</script>
 		<a class="btn btn-info btn-block btn-raised" href="/correlation">探究相关性</a>
+		<label>共回收 <%= @vote_num %> 份调查问卷</label>
+		<div id="history"></div>
+		<script>
+		$.getJSON("/voter_num",function(data){
+			$('#history').highcharts({
+				title: {
+					text: '每日投票量',
+				},
+				xAxis: {
+					categories: data.x_axis.map(function(s){
+						var d=new Date(s);
+						if(d.getDate()==1){
+							if(d.getMonth()==1)
+								return d.getYear()+"年";
+							else
+								return (d.getMonth()+1)+"月";
+						}else{
+							return d.getDate();
+						}
+					}),
+				},
+				yAxis: {
+					title: {
+						text: '投票量'
+					},
+					plotLines: [{
+						value: 0,
+						width: 1,
+						color: '#808080'
+					}]
+				},
+				tooltip: {
+					formatter:function(){
+						return "<b>"+data.x_axis[this.point.x]+"</b><br/>"+
+						this.point.y+" 份";
+					},
+					//~ headerFormat: '{point.index}<br/>',
+					//~ valueSuffix: '份'
+				},
+				legend: {
+					layout: 'vertical',
+					align: 'right',
+					verticalAlign: 'middle',
+					borderWidth: 0
+				},
+				series: [{
+					name: '当日投票量',
+					data: data.data,
+				}],
+			});
+		});
+		</script>
 	</body>
 </html>

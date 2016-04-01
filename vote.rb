@@ -27,6 +27,7 @@ post "/submit_res" do
     "Succeed"
 end
 get "/analysis" do
+    @vote_num=db[:vote].count
     erb :analysis
 end
 get "/vote_analysis" do
@@ -43,6 +44,7 @@ get "/vote_analysis" do
     end)
 end
 get "/correlation" do
+    @vote_num=db[:vote].count
     @qdata=YAML.load_file("questions")
     erb :correlation
 end
@@ -89,4 +91,24 @@ get "/correlation_data" do
                 }
             },
         })
+end
+
+get "/voter_num" do
+    min_date_vote=db[:vote].find("time"=>{"$exists"=>true}).limit(1).to_a.first
+    status 500 if min_date_vote.nil?
+    min_date=min_date_vote["time"]
+    p min_date.class
+    x_axis=(min_date.to_datetime..DateTime.now).map do|t|
+        t.strftime "%Y-%m-%d"
+    end
+    data=(min_date.to_datetime..DateTime.now).map{|d|
+        db[:vote].find("time"=>{
+            "$lt"=>d+1,
+            "$gte"=>d,
+        }).count
+    }
+    JSON.dump({
+        "x_axis"=>x_axis,
+        "data"=>data,
+    })
 end

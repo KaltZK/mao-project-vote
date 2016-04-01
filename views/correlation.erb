@@ -37,7 +37,7 @@
 	<body>
 		<h1>统计结果相关性分析</h1>
 		<div id="selecting_box">
-			<%[["axis","分类"],["q1","X轴"],["q2","Y轴"]].each do |id,name|%>
+			<%[["axis","分类"],["q1","X轴(必选)"],["q2","Y轴(必选)"]].each do |id,name|%>
 				<label>请选择<%=name%></label>
 				<select id="select_<%=id%>" class="form-control">
 					<%["无"].concat(@qdata.map{|x| x["ques"]}).map do|opt|%>
@@ -55,6 +55,8 @@
 				q2=$("#select_q2").val();
 			if(q1=='无' || q2=='无'){
 				alert("X轴与Y轴必须选择");
+			}else if(q1==q2){
+				alert("X轴与Y轴应当不同");
 			}else{
 				renderChart(axis,q1,q2);
 			}
@@ -106,5 +108,13 @@
 			});
 		}
 		</script>
+		<div class="bg-info">
+		<b>Tips:</b><br/>
+		圆圈大小代表人数多少。点击圆圈可查看详细信息。<br/>
+		若希望分类查看数据可在"分类"选择，否则选"无"。<br/>
+		在PC建议将选项多的问题定为X轴，选项少的定为Y轴。<br/>
+		在手机上则相反。<br/>
+		</div>
+		<label>共回收 <%= @vote_num %> 份调查问卷</label>
 	</body>
 </html>
