@@ -17,6 +17,8 @@
 				position: absolute;
 			}
 		</style>
+        <div class="panel panel-default">
+		<div class="panel-body">
 		<title>调查结果</title>
 		<!-- 新 Bootstrap 核心 CSS 文件 -->
 		<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -56,7 +58,7 @@
 			if(q1=='无' || q2=='无'){
 				alert("X轴与Y轴必须选择");
 			}else if(q1==q2){
-				alert("X轴与Y轴应当不同");
+				alert("X轴与Y轴不应相同");
 			}else{
 				renderChart(axis,q1,q2);
 			}
@@ -116,5 +118,7 @@
 		在手机上则相反。<br/>
 		</div>
 		<label>共回收 <%= @vote_num %> 份调查问卷</label>
+		</div>
+		</div>
 	</body>
 </html>
