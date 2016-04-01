@@ -28,8 +28,9 @@ function select(index){
 	}
 }
 function finish(){
-	window.location="/thank_you";
-    $.post("/submit_res",result);
+    $.post("/submit_res",result,function(){
+		window.location="/thank_you";
+	});
 }
 function array_includes(array,target){
 	for(var i=0;i<array.length;i++){

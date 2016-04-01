@@ -24,6 +24,7 @@ post "/submit_res" do
     res["source"]="network"
     res["time"]=DateTime.now
     db[:vote].insert_one res
+    "Succeed"
 end
 get "/analysis" do
     erb :analysis
