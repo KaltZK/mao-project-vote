@@ -8,6 +8,12 @@ function record(){
 		setTimeout(next,TIMEOUT);
 	}
 }
+function go_back(){
+	setTimeout(function(){
+		q_index--;
+		next();
+	},TIMEOUT);
+}
 function select(index){
 	var ele=document.getElementById("option_"+index);
 	if(ques.type=="multi"){
@@ -79,4 +85,13 @@ function next(){
 $.getJSON("/questions",function(_data){
 	data=_data;
 	next();
+});
+$(document).on("keyup",function(evt){
+	console.log(evt.which);
+	if(evt.which>48 && evt.which <58)
+		$("#option_"+(evt.which-49)).trigger('mousedown');
+	else if(evt.which>96 && evt.which <106)
+		$("#option_"+(evt.which-97)).trigger('mousedown');
+	else if(evt.which==13 && $("#next_btn").css('display')!='none')
+		$("#next_btn").trigger('mousedown');
 });
